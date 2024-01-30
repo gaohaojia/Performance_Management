@@ -87,6 +87,7 @@ def main():
         if PRINT_INFO:
             print("\r工作量查询回复处理中...", end="")
         reply.reply_query_processor(db, now_time, query_last_time, wecom_request, access_token, app_access_token, WECOM_KEY)
+        query_last_time = now_time
         
             
 
@@ -96,6 +97,7 @@ def main():
         if PRINT_INFO:
             print("\r周报回复处理中...", end="")
         reply.reply_news_processor(now_time, news_last_time, wecom_request, access_token, app_access_token, WECOM_KEY)
+        news_last_time = now_time
 
 
 

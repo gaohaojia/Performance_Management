@@ -115,7 +115,7 @@ def push_processor(db, wecom_request, address_access_token, app_access_token, WE
 
             # 最近90天工作量
             if SKIP_DATE_BEGIN <= now_date <= SKIP_DATE_END:
-                if (SKIP_DATE_END - i[0]).days <= 90:
+                if (now_date - SKIP_DATE_END).days <= 90:
                     last_90day_time += i[2]
             elif now_date < SKIP_DATE_BEGIN:
                 if (now_date - i[0]).days - (SKIP_DATE_END - SKIP_DATE_BEGIN).days <= 90:
@@ -128,7 +128,7 @@ def push_processor(db, wecom_request, address_access_token, app_access_token, WE
             if (i[0] - get_last_wek_weekday(0)).days >= 0:
                 last_week_time += i[2]
                 has_last_week = True
-                
+
         if has_last_week:
             last_week_cnt += 1
         result_list.append([name, round(last_week_time, 1), round(last_90day_time, 1), round(total_time, 1), user['userid']])

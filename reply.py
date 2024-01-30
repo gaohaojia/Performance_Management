@@ -4,7 +4,6 @@ import csv
 def reply_query_processor(db, now_time, query_last_time, wecom_request, access_token, app_access_token, WECOM_KEY):
     # 获取审批内容
     sp_no_list = wecom_request.get_sp_no_list(access_token, WECOM_KEY['query_template_id'], query_last_time, now_time, "")
-    query_last_time = now_time
 
     # 判断审批是否都处理
     all_sp_data = []
@@ -47,7 +46,6 @@ def reply_query_processor(db, now_time, query_last_time, wecom_request, access_t
 def reply_news_processor(now_time, news_last_time, wecom_request, access_token, app_access_token, WECOM_KEY):
     # 获取审批内容
     sp_no_list = wecom_request.get_sp_no_list(access_token, WECOM_KEY['news_template_id'], news_last_time, now_time, "")
-    news_last_time = now_time
 
     # 判断审批是否都处理
     all_sp_data = []
